@@ -1,0 +1,42 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Android build artifacts
+app/build/
+/app/build/
+build/
+*.apk
+*.ap_
+*.dex
+*.class
+*.so
+*.jar
+
+# Android Studio
+.idea/gradle.xml
+.idea/misc.xml
+.idea/vcs.xml
+
+# Gradle
+.gradle/
+gradle/
+
+# Native build outputs
+obj/
+libs/
+
+# Kotlin
+*.kotlin_module
