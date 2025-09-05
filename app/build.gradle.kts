@@ -90,6 +90,16 @@ dependencies {
     implementation("androidx.webkit:webkit:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     
+    // Voice-controlled browser agent dependencies
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+    implementation("androidx.mediarouter:mediarouter:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    
+    // Enhanced JSON processing for command parsing
+    implementation("org.json:json:20231013")
+    
     // LeakCanary for memory leak detection (debug builds only)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
     

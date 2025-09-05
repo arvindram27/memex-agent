@@ -8,6 +8,14 @@
     
     <!-- Audio recording permission -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- Voice-controlled browser agent permissions -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <!-- Screen capture permissions (API 21+) -->
+    <uses-permission android:name="android.permission.MEDIA_PROJECTION" />
 
     <application
         android:allowBackup="true"
