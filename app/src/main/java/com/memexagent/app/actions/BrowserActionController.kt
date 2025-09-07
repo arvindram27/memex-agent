@@ -97,7 +97,7 @@ class BrowserActionController(private val webView: WebView) {
     ): String {
         return """
             (function() {
-                const entities = ${entities.map { "\"$it\"" }};
+                const entities = [${entities.joinToString(", ") { "\"$it\"" }}];
                 
                 // Function to highlight element before clicking
                 function highlightElement(element) {
@@ -123,12 +123,12 @@ class BrowserActionController(private val webView: WebView) {
                     
                     // Strategy 2: Find by attributes (aria-label, title, alt)
                     if (!element) {
-                        element = document.querySelector(`[aria-label*="${entity}" i], [title*="${entity}" i], [alt*="${entity}" i]`);
+                        element = document.querySelector('[aria-label*="' + entity + '" i], [title*="' + entity + '" i], [alt*="' + entity + '" i]');
                     }
                     
                     // Strategy 3: Find by ID or class containing the entity
                     if (!element) {
-                        element = document.querySelector(`#${entity}, .${entity}, [id*="${entity}"], [class*="${entity}"]`);
+                        element = document.querySelector('#' + entity + ', .' + entity + ', [id*="' + entity + '"], [class*="' + entity + '"]');
                     }
                     
                     // Strategy 4: Positional matching (first, last, etc.)

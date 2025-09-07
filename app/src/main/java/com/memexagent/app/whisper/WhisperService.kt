@@ -13,7 +13,7 @@ class WhisperService(private val context: Context) {
         
         init {
             try {
-                System.loadLibrary("memexos_native")
+                System.loadLibrary("memexagent_native")
                 Log.d(TAG, "Whisper library loaded successfully")
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to load Whisper library", e)
@@ -113,7 +113,7 @@ class WhisperService(private val context: Context) {
         }
         
         try {
-            val audioData = com.memexos.app.audio.WaveFileEncoder.decodeWaveFile(wavFile)
+            val audioData = com.memexagent.app.audio.WaveFileEncoder.decodeWaveFile(wavFile)
             return@withContext transcribe(audioData)
         } catch (e: Exception) {
             Log.e(TAG, "Error reading WAV file", e)

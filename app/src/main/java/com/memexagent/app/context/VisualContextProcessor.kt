@@ -265,8 +265,8 @@ class VisualContextProcessor {
             val context = parseJsonString(jsonString)
             return WebPageContext(
                 visibleText = context["visibleText"] as? String ?: "",
-                clickableElements = parseElements(context["clickableElements"] as? List<*> ?: emptyList()),
-                formFields = parseElements(context["formFields"] as? List<*> ?: emptyList()),
+                clickableElements = parseElements((context["clickableElements"] as? List<*>) ?: emptyList<Any>()),
+                formFields = parseElements((context["formFields"] as? List<*>) ?: emptyList<Any>()),
                 currentUrl = context["currentUrl"] as? String ?: "",
                 pageTitle = context["pageTitle"] as? String ?: "",
                 pageStructure = context["pageStructure"] as? Map<String, Any> ?: emptyMap()

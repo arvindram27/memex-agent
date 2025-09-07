@@ -1,6 +1,6 @@
 # CMakeLists.txt for Whisper.cpp Android integration
 cmake_minimum_required(VERSION 3.22.1)
-project("memexos")
+project("memexagent")
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -25,24 +25,24 @@ find_library(log-lib log)
 find_library(android-lib android)
 
 # Create JNI wrapper library
-add_library(memexos_native SHARED
+add_library(memexagent_native SHARED
     whisper_jni.cpp)
 
 # Link libraries
-target_link_libraries(memexos_native
+target_link_libraries(memexagent_native
     whisper
     ${log-lib}
     ${android-lib})
 
 # Include directories
-target_include_directories(memexos_native PRIVATE
+target_include_directories(memexagent_native PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/whisper
     ${CMAKE_CURRENT_SOURCE_DIR}/whisper/include)
 
 # Compiler flags for optimization
 if(${CMAKE_BUILD_TYPE} MATCHES "Release")
-    target_compile_options(memexos_native PRIVATE
+    target_compile_options(memexagent_native PRIVATE
         -O3
         -ffast-math
         -funroll-loops)
@@ -50,9 +50,9 @@ endif()
 
 # Platform-specific optimizations
 if(${ANDROID_ABI} STREQUAL "arm64-v8a")
-    target_compile_options(memexos_native PRIVATE -march=armv8-a)
+    target_compile_options(memexagent_native PRIVATE -march=armv8-a)
 elseif(${ANDROID_ABI} STREQUAL "x86_64")
-    target_compile_options(memexos_native PRIVATE
+    target_compile_options(memexagent_native PRIVATE
         -march=x86-64
         -msse4.2)
 endif()

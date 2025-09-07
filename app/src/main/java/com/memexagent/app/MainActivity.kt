@@ -104,6 +104,9 @@ class MainActivity : AppCompatActivity() {
         // Initialize voice command processor
         voiceCommandProcessor = VoiceCommandProcessor(this, webView)
         
+        // Test basic voice agent components
+        testVoiceAgentComponents()
+        
         // Load initial URL
         webView.loadUrl(DEFAULT_URL)
     }
@@ -467,6 +470,40 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("OK", null)
             .setCancelable(false)
             .show()
+    }
+    
+    private fun testVoiceAgentComponents() {
+        lifecycleScope.launch {
+            try {
+                Log.d(TAG, "Starting Voice Agent component tests...")
+                
+                // Test VoiceAgentTest component
+                val voiceAgentTest = VoiceAgentTest()
+                val testResults = voiceAgentTest.runAllTests()
+                
+                Log.d(TAG, "Voice Agent tests completed. All passed: $testResults")
+                
+                // Show test results to user
+                runOnUiThread {
+                    Toast.makeText(
+                        this@MainActivity,
+                        if (testResults) "✅ Voice Agent components loaded successfully!" 
+                        else "⚠️ Some Voice Agent components had issues",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                
+            } catch (e: Exception) {
+                Log.e(TAG, "Error testing voice agent components", e)
+                runOnUiThread {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "❌ Voice Agent component test failed: ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
     
     override fun onBackPressed() {
